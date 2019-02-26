@@ -1,0 +1,13 @@
+.siteContain {
+  background-color: aqua;
+  width: 100vw;
+  height: 60vw;
+  max-height: 100vh;
+  max-width: 166.66vh;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
