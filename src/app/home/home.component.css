@@ -43,6 +43,10 @@
   margin: 0 auto;
 }
 
+.nowSummery {
+  font-size: calc(1.3vw + 0.8vh);
+}
+
 .linkPosHelp{
   height: 100%;
   width: 100%;
