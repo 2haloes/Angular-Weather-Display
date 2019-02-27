@@ -3,7 +3,7 @@
 }
 
 .siteContain {
-  background-color: aqua;
+  background-color: skyblue;
   width: 100vw;
   height: 60vw;
   max-height: 100vh;
@@ -17,20 +17,41 @@
 }
 
 .nowDataContain {
-  background-color: orange;
   height: 100%;
   width: 37%;
   position: absolute;
 }
 
-.currentTime {
+.noMargin {
   margin: 0;
 }
 
 .nowIconImg {
   object-fit: contain;
-  height: 40%;
-  width: 100%
+  height: 35%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nowIconText {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.nowTempText {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.linkPosHelp{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.poweredLink {
+  position: absolute;
+  bottom: 0;
 }
 
 .centerText {
