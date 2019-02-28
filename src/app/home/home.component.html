@@ -24,6 +24,60 @@
   </div>
 
   <div class="dayDataContain">
+    <div class="dayData"> <!-- TODO: Make ngrepeat after basic data pulling has been implimented -->
+
+      <div class="dayDisplay">
+        <h3 class="noMargin" fittext [minFontSize]="1">Mon</h3>
+      </div>
+
+      <div class="dayContentBox">
+        <img src="../../assets/images/clear-day.png" class="dayIconImg" />
+      </div>
+
+      <div class="dayContentBox" id="MaxTemp">
+        <div class="dayHalfDataBox">
+          <h3 fittext class="dayMargin">Max:</h3>
+        </div>
+
+        <div class="dayHalfDataBox">
+          <h3 fittext class="dayMargin">0.0°C</h3>
+        </div>
+      </div>
+
+      <div class="dayContentBox" id="MinTemp">
+        <div class="dayHalfDataBox">
+          <h3 fittext class="dayMargin">Min:</h3>
+        </div>
+
+        <div class="dayHalfDataBox">
+          <h3 fittext class="dayMargin">0.0°C</h3>
+        </div>
+      </div>
+
+      <div class="dayContentBox" id="SunRise">
+        <div class="dayHalfDataBox">
+          <img class="sunIconImg dayMargin" src="../../assets/images/sun-rise.png">
+        </div>
+
+        <div class="dayHalfDataBox">
+          <h3 fittext class="dayMargin">0.0°C</h3>
+        </div>
+      </div>
+
+      <div class="dayContentBox" id="SunSet">
+        <div class="dayHalfDataBox">
+          <img class="sunIconImg dayMargin" src="../../assets/images/sun-set.png">
+        </div>
+
+        <div class="dayHalfDataBox">
+          <h3 fittext class="dayMargin">0.0°C</h3>
+        </div>
+      </div>
+
+      <div class="summeryContentBox" id="Summery">
+        <p class="daySummery dayMargin">Light rain in the coming few days. High tempretures will max at 3C and bottom out at 0C</p>
+      </div>
+    </div>
 
   </div>
 </div>
