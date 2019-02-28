@@ -44,7 +44,8 @@
 }
 
 .nowSummery {
-  font-size: calc(1.3vw + 0.8vh);
+  /* font-size: calc(1.3vw + 0.8vh); */
+  font-size: 1.3vmax;
 }
 
 .linkPosHelp{
