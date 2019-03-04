@@ -2,7 +2,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { WeatherServiceService } from '../weather-service.service';
 import { HttpClient } from '@angular/common/http';
-import { interval } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   units = 'auto';
   summery = 'current';
   _currentTime: number;
-  timeObserInterval = interval(5000);
+  timeObserInterval = timer(0, 5000);
   apiURL: string;
 
   public get CurrentTime() {
@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
     this.units = this.route.snapshot.paramMap.get('units'),
     this.summery = this.route.snapshot.paramMap.get('summery');
     this.apiURL = `https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=minutely,hourly`
-    this.CurrentTime = Date.now();
     console.log(this.apiURL);
     console.log(`The current unit is ${this.units} and the current lang is ${this.lang}`);
     this.timeObserInterval.subscribe(n => this.TimerElapse());
