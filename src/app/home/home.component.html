@@ -5,17 +5,17 @@
       <div class="linkPosHelp">
         <h1 class="noMargin centerText" fittext>{{_currentTime | date:'hh:mmaa'}}</h1>
 
-        <img src="../../assets/images/clear-day.png" class="nowIconImg" />
+        <img src="../../assets/images/{{weatherData.currently.icon}}.png" class="nowIconImg" />
 
         <div class="nowIconText">
-          <h3 class="noMargin centerText" fittext>clear-day</h3>
+          <h3 class="noMargin centerText" fittext>{{weatherData.currently.icon}}</h3>
         </div>
 
         <div class="nowTempText">
-          <h3 class="noMargin centerText" fittext>{{weatherData.currently.temperature}}{{UnitGet()}}</h3>
+          <h3 class="noMargin centerText" fittext>{{weatherData.currently.temperature.toFixed(UnitRound)}}{{UnitGet()}}</h3>
         </div>
 
-        <p class="noMargin centerText nowSummery">Light rain in the coming few days. High tempretures will max at 3C and bottom out at 0C</p>
+        <p class="noMargin centerText nowSummery">{{SummaryGet()}}</p>
 
 
         <a href="https://darksky.net/poweredby/"><p class="noMargin centerText poweredLink nowSummery">Powered by DarkSky</p></a>
@@ -24,14 +24,14 @@
   </div>
 
   <div class="dayDataContain">
-    <div class="dayData"> <!-- TODO: Make ngrepeat after basic data pulling has been implimented -->
+    <div class="dayData" *ngFor="let dayData of weatherData.daily.data" >
 
       <div class="dayDisplay">
-        <h3 class="noMargin" fittext [minFontSize]="1">Mon</h3>
+        <h3 class="noMargin" fittext [minFontSize]="1">{{TimeGet(dayData.time) | date:'EEE'}}</h3>
       </div>
 
       <div class="dayContentBox">
-        <img src="../../assets/images/clear-day.png" class="dayIconImg" />
+        <img src="../../assets/images/{{dayData.icon}}.png" class="dayIconImg" />
       </div>
 
       <div class="dayContentBox" id="MaxTemp">
@@ -40,7 +40,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">0.0°C</h3>
+          <h3 fittext class="dayMargin">{{dayData.temperatureHigh.toFixed(UnitRound)}}{{UnitGet()}}</h3>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">0.0°C</h3>
+          <h3 fittext class="dayMargin">{{dayData.temperatureLow.toFixed(UnitRound)}}{{UnitGet()}}</h3>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">0.0°C</h3>
+          <h3 fittext class="dayMargin">{{dayData.sunriseTime | date:'hh:mm'}}</h3>
         </div>
       </div>
 
@@ -70,12 +70,12 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">0.0°C</h3>
+          <h3 fittext class="dayMargin">{{dayData.sunsetTime | date:'hh:mm'}}</h3>
         </div>
       </div>
 
       <div class="summeryContentBox" id="Summery">
-        <p class="daySummery dayMargin">Light rain in the coming few days. High tempretures will max at 3C and bottom out at 0C</p>
+        <p class="daySummery dayMargin">{{dayData.summary}}</p>
       </div>
     </div>
 

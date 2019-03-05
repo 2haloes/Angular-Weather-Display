@@ -81,7 +81,7 @@ export class WeatherServiceService {
       'uk2',
       'us', // The default
       'si'
-    ]
+    ];
   }
 
 }

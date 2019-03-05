@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   lat = '0.00';
   lon = '0.00';
   units = 'auto';
-  summery = 'current';
+  summary = 'current';
   _currentTime: number;
   timeObserInterval = timer(0, 5000);
   weatherSub: Subscription;
@@ -41,18 +41,17 @@ export class HomeComponent implements OnInit {
     this.lat = this.route.snapshot.paramMap.get('lat'),
     this.lon = this.route.snapshot.paramMap.get('lon'),
     this.units = this.route.snapshot.paramMap.get('units'),
-    this.summery = this.route.snapshot.paramMap.get('summery');
+    this.summary = this.route.snapshot.paramMap.get('summery');
     this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=minutely,hourly`
-    console.log(this.apiURL);
-    console.log(`The current unit is ${this.units} and the current lang is ${this.lang}`);
     this.timeObserInterval.subscribe(n => this.TimerElapse());
+
+    console.log(this.apiURL);
 
     this.weatherSub = timer(0, 120000).pipe(
       switchMap(
         () => this.weatherService.dataGet(this.apiURL)
       )
     ).subscribe(result => this.weatherData = result);
-    console.log(this.weatherData);
   }
 
   TimerElapse() {
@@ -61,10 +60,30 @@ export class HomeComponent implements OnInit {
 
   UnitGet() {
     if (this.weatherData.flags.units === 'us') {
-      return "°F";
+      return '°F';
     } else {
-      return "°C";
+      return '°C';
     }
+  }
+
+  UnitRound() {
+    if (this.weatherData.flags.units === 'us') {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
+  SummaryGet() {
+    if (!!this.summary && this.summary == 'weeklong') {
+      return this.weatherData.daily.summary;
+    } else {
+      return this.weatherData.currently.summary;
+    }
+  }
+
+  TimeGet(unixTime) {
+    return new Date(unixTime);
   }
 
 }
