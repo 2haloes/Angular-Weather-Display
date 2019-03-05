@@ -16,11 +16,11 @@ export class WeatherServiceService {
     let returnString = '';
 
     if (!!lang && this.genLangList().includes(lang)) {
-      returnString += `?lang=${lang}&`;
+      returnString += `lang=${lang}&`;
     }
 
     if (!!units && this.genUnitList().includes(units)) {
-      returnString += `?units=${units}&`;
+      returnString += `units=${units}&`;
     }
 
     return returnString;
