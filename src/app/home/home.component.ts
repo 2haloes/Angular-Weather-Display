@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   }
 
   TimeGet(unixTime) {
-    return new Date(unixTime);
+    return new Date(unixTime * 1000);
   }
 
 }
