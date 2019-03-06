@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     this.lon = this.route.snapshot.paramMap.get('lon'),
     this.units = this.route.snapshot.paramMap.get('units'),
     this.summary = this.route.snapshot.paramMap.get('summery');
-    this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=minutely,hourly`
+    this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=minutely,hourly`;
     this.timeObserInterval.subscribe(n => this.TimerElapse());
 
     console.log(this.apiURL);
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit {
   }
 
   SummaryGet() {
-    if (!!this.summary && this.summary == 'weeklong') {
+    if (!!this.summary && this.summary === 'weeklong') {
       return this.weatherData.daily.summary;
     } else {
       return this.weatherData.currently.summary;
