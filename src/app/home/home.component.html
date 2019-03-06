@@ -8,11 +8,11 @@
         <img src="../../assets/images/{{weatherData.currently.icon}}.png" class="nowIconImg" />
 
         <div class="nowIconText">
-          <h3 class="noMargin centerText" fittext>{{weatherData.currently.icon}}</h3>
+          <h3 class="noMargin centerText nowIcon">{{weatherData.currently.icon}}</h3>
         </div>
 
         <div class="nowTempText">
-          <h3 class="noMargin centerText" fittext>{{weatherData.currently.temperature.toFixed(UnitRound)}}{{UnitGet()}}</h3>
+          <h3 class="noMargin centerText nowTemp">{{weatherData.currently.temperature.toFixed(UnitRound)}}{{UnitGet()}}</h3>
         </div>
 
         <p class="noMargin centerText nowSummery">{{SummaryGet()}}</p>
