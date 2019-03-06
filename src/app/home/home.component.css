@@ -29,6 +29,10 @@
   margin: 0;
 }
 
+.nowTime {
+  font-size: calc(6vw + 3vh);
+}
+
 .nowIconImg {
   object-fit: contain;
   height: 35%;
@@ -89,6 +93,14 @@
 
 .dayDisplay {
   width: 9%;
+}
+
+.dayDisplayText {
+  font-size: calc(2vw + 1vh);
+}
+
+.dayTempText {
+  font-size: calc(2.25vw + 1.125vh);
 }
 
 .dayContentBox {

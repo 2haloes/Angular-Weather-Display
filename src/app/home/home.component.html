@@ -3,7 +3,7 @@
     <!-- The linkPosHelp div allows the Powered by DarkSky link to be placed
         at the bottom of the container without awkwardly relying on other elements pushing it down-->
       <div class="linkPosHelp">
-        <h1 class="noMargin centerText" fittext>{{_currentTime | date:'hh:mmaa'}}</h1>
+        <h1 class="noMargin centerText nowTime">{{_currentTime | date:'hh:mmaa'}}</h1>
 
         <img src="../../assets/images/{{weatherData.currently.icon}}.png" class="nowIconImg" />
 
@@ -27,7 +27,7 @@
     <div class="dayData" *ngFor="let dayData of weatherData.daily.data" >
 
       <div class="dayDisplay">
-        <h3 class="noMargin" fittext [minFontSize]="1">{{TimeGet(dayData.time) | date:'EEE'}}</h3>
+        <h3 class="noMargin dayDisplayText" >{{TimeGet(dayData.time) | date:'EEE'}}</h3>
       </div>
 
       <div class="dayContentBox">
@@ -36,21 +36,21 @@
 
       <div class="dayContentBox" id="MaxTemp">
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">Max:</h3>
+          <h3 class="dayMargin dayTempText">Max:</h3>
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">{{dayData.temperatureHigh.toFixed(UnitRound)}}{{UnitGet()}}</h3>
+          <h3 class="dayMargin dayTempText">{{dayData.temperatureHigh.toFixed(UnitRound)}}{{UnitGet()}}</h3>
         </div>
       </div>
 
       <div class="dayContentBox" id="MinTemp">
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">Min:</h3>
+          <h3 class="dayMargin dayTempText">Min:</h3>
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">{{dayData.temperatureLow.toFixed(UnitRound)}}{{UnitGet()}}</h3>
+          <h3 class="dayMargin dayTempText">{{dayData.temperatureLow.toFixed(UnitRound)}}{{UnitGet()}}</h3>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">{{dayData.sunriseTime | date:'hh:mm'}}</h3>
+          <h3 class="dayMargin dayTempText">{{dayData.sunriseTime | date:'hh:mm'}}</h3>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 fittext class="dayMargin">{{dayData.sunsetTime | date:'hh:mm'}}</h3>
+          <h3 class="dayMargin dayTempText">{{dayData.sunsetTime | date:'hh:mm'}}</h3>
         </div>
       </div>
 
