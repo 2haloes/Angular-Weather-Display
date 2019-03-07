@@ -60,7 +60,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">{{dayData.sunriseTime | date:'hh:mm'}}</h3>
+          <h3 class="dayMargin dayTempText">{{TimeGet(dayData.sunriseTime) | date:'hh:mm'}}</h3>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">{{dayData.sunsetTime | date:'hh:mm'}}</h3>
+          <h3 class="dayMargin dayTempText">{{TimeGet(dayData.sunsetTime) | date:'hh:mm'}}</h3>
         </div>
       </div>
 
