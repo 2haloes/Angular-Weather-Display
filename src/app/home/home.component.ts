@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
     this.lat = this.route.snapshot.paramMap.get('lat'),
     this.lon = this.route.snapshot.paramMap.get('lon'),
     this.units = this.route.snapshot.paramMap.get('units'),
-    this.summary = this.route.snapshot.paramMap.get('summery');
+    this.summary = this.route.snapshot.paramMap.get('summary');
     this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=hourly`;
     this.timeObserInterval.subscribe(n => this.TimerElapse());
 
