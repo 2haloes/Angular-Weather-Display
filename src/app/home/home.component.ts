@@ -1,5 +1,5 @@
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, enableProdMode } from '@angular/core';
 import { WeatherServiceService } from '../weather-service.service';
 import { HttpClient } from '@angular/common/http';
 import { Subscription, timer } from 'rxjs';
@@ -42,10 +42,8 @@ export class HomeComponent implements OnInit {
     this.lon = this.route.snapshot.paramMap.get('lon'),
     this.units = this.route.snapshot.paramMap.get('units'),
     this.summary = this.route.snapshot.paramMap.get('summery');
-    this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=minutely,hourly`;
+    this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=hourly`;
     this.timeObserInterval.subscribe(n => this.TimerElapse());
-
-    console.log(this.apiURL);
 
     this.weatherSub = timer(0, 120000).pipe(
       switchMap(
@@ -77,6 +75,8 @@ export class HomeComponent implements OnInit {
   SummaryGet() {
     if (!!this.summary && this.summary === 'weeklong') {
       return this.weatherData.daily.summary;
+    } else if(!!this.summary && this.summary === 'minutely') {
+      return this.weatherData.minutely.summary;
     } else {
       return this.weatherData.currently.summary;
     }

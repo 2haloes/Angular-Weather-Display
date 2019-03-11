@@ -1,4 +1,5 @@
 /* font-size: calc(1vw + 0.5vh); appears to work well with scaling */
+/* vmin in use now */
 
 *{
   font-family: Arial, Helvetica, sans-serif;
@@ -30,7 +31,8 @@
 }
 
 .nowTime {
-  font-size: calc(6vw + 3vh);
+  /* font-size: calc(6vw + 3vh); */
+  font-size: 15vmin;
 }
 
 .nowIconImg {
@@ -46,7 +48,7 @@
 }
 
 .nowIcon {
-  font-size: calc(2vw + 1vh);
+  font-size: 7vmin;
 }
 
 .nowTempText {
@@ -54,12 +56,12 @@
 }
 
 .nowTemp {
-  font-size: calc(8vw + 4vh);
+  font-size: 20vmin;
 }
 
 .nowSummery {
   /* font-size: calc(1.3vw + 0.8vh); */
-  font-size: calc(1vw + 0.5vh);
+  font-size: 3vmin;
 }
 
 .linkPosHelp{
@@ -96,11 +98,15 @@
 }
 
 .dayDisplayText {
-  font-size: calc(2vw + 1vh);
+  font-size: 6vmin;
+}
+
+.dayLabelText {
+  font-size: 5.5vmin;
 }
 
 .dayTempText {
-  font-size: calc(2vw + 1.125vh);
+  font-size: 7vmin;
 }
 
 .dayContentBox {
@@ -128,7 +134,7 @@
 }
 
 .daySummery {
-  font-size: calc(0.7vw + 0.35vh);
+  font-size: 2vmin;
 }
 
 .sunIconImg {

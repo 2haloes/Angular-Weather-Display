@@ -12,7 +12,7 @@
         </div>
 
         <div class="nowTempText">
-          <h3 class="noMargin centerText nowTemp">{{weatherData.currently.temperature.toFixed(UnitRound)}}{{UnitGet()}}</h3>
+          <h3 class="noMargin centerText nowTemp">{{weatherData.currently.temperature.toFixed(UnitRound())}}{{UnitGet()}}</h3>
         </div>
 
         <p class="noMargin centerText nowSummery">{{SummaryGet()}}</p>
@@ -36,21 +36,21 @@
 
       <div class="dayContentBox" id="MaxTemp">
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">Max:</h3>
+          <h3 class="dayMargin dayLabelText">Max:</h3>
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">{{dayData.temperatureHigh.toFixed(UnitRound)}}{{UnitGet()}}</h3>
+          <h3 class="dayMargin dayTempText">{{dayData.temperatureHigh.toFixed(UnitRound())}}</h3>
         </div>
       </div>
 
       <div class="dayContentBox" id="MinTemp">
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">Min:</h3>
+          <h3 class="dayMargin dayLabelText">Min:</h3>
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">{{dayData.temperatureLow.toFixed(UnitRound)}}{{UnitGet()}}</h3>
+          <h3 class="dayMargin dayTempText">{{dayData.temperatureLow.toFixed(UnitRound())}}</h3>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">{{TimeGet(dayData.sunriseTime) | date:'hh:mm'}}</h3>
+          <h3 class="dayMargin dayLabelText">{{TimeGet(dayData.sunriseTime) | date:'hh:mm'}}</h3>
         </div>
       </div>
 
@@ -70,7 +70,7 @@
         </div>
 
         <div class="dayHalfDataBox">
-          <h3 class="dayMargin dayTempText">{{TimeGet(dayData.sunsetTime) | date:'hh:mm'}}</h3>
+          <h3 class="dayMargin dayLabelText">{{TimeGet(dayData.sunsetTime) | date:'hh:mm'}}</h3>
         </div>
       </div>
 
