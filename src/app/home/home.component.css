@@ -42,17 +42,8 @@
   margin: 0 auto;
 }
 
-.nowIconText {
-  width: 100%;
-  margin: 0 auto;
-}
-
 .nowIcon {
   font-size: 7vmin;
-}
-
-.nowTempText {
-  margin: 0 auto;
 }
 
 .nowTemp {
@@ -91,10 +82,6 @@
   height: 19.945%;
   margin: 0;
   display: inline-flex;
-}
-
-.dayDisplay {
-  width: 9%;
 }
 
 .dayDisplayText {

@@ -7,13 +7,9 @@
 
         <img src="../../assets/images/{{weatherData.currently.icon}}.png" class="nowIconImg" />
 
-        <div class="nowIconText">
-          <h3 class="noMargin centerText nowIcon">{{weatherData.currently.icon}}</h3>
-        </div>
+        <h3 class="noMargin centerText nowIcon">{{weatherData.currently.icon}}</h3>
 
-        <div class="nowTempText">
-          <h3 class="noMargin centerText nowTemp">{{weatherData.currently.temperature.toFixed(UnitRound())}}{{UnitGet()}}</h3>
-        </div>
+        <h3 class="noMargin centerText nowTemp">{{weatherData.currently.temperature.toFixed(UnitRound())}}{{UnitGet()}}</h3>
 
         <p class="noMargin centerText nowSummery">{{SummaryGet()}}</p>
 
@@ -26,9 +22,7 @@
   <div class="dayDataContain">
     <div class="dayData" *ngFor="let dayData of weatherData.daily.data" >
 
-      <div class="dayDisplay">
-        <h3 class="noMargin dayDisplayText" >{{TimeGet(dayData.time) | date:'EEE'}}</h3>
-      </div>
+      <h3 class="noMargin dayDisplayText" >{{TimeGet(dayData.time) | date:'EEE'}}</h3>
 
       <div class="dayContentBox">
         <img src="../../assets/images/{{dayData.icon}}.png" class="dayIconImg" />
