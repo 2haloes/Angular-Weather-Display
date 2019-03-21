@@ -1,32 +1,28 @@
 <%@ Page Language="C#" %>
 <%@ Import Namespace="System.Net" %>
-<%@ Import Namespace="System.Net.Http" %>
 
-<!-- This is based on documentation found on the Microsoft website,
-I don't have much exprience in this type of thing in C# but it feels too complicated -->
+
 <%
-string errorReturn = "{\"currently\": {\"icon\": \"API-ERROR\"}}";
+    string errorReturn = "{\"currently\": {\"icon\": \"API-ERROR\"}}";
 
-HttpClient client = new HttpClient();
-string retval = "";
-string queryString = "";
-string currentURL = HttpContext.Current.Request.RawUrl;
-int queryIndex = currentURL.IndexOf('?');
+    string retval = "";
+    string queryString = "";
+    string currentURL = HttpContext.Current.Request.RawUrl;
+    int queryIndex = currentURL.IndexOf('?');
 
-queryString = currentURL.Substring(queryIndex + 1);
-queryString = queryString.replace('_', '&');
+    queryString = currentURL.Substring(queryIndex + 1);
+    queryString = queryString.Replace('_', '&');
 
-HttpResponseMessage response = client.GetAsync(queryString).Result;
+    Response.Clear();
+    Response.ContentType = "application/json; charset=utf-8";
 
-try {
-  if(response.IsSuccessStatusCode){
-  retval = response.Content.ReadAsStringAsync().Result;
-  }
-}
-catch (Exception ex) {
-  Response.write(errorReturn);
-}
-finally {
-  Response.write(retval);
-}
+    try {
+        retval = new WebClient().DownloadString(queryString);
+    }
+    catch (Exception ex) {
+        Response.Write(errorReturn);
+    }
+    finally {
+        Response.Write(retval);
+    }
 %>
