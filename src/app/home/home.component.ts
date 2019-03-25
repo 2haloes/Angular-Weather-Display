@@ -1,9 +1,8 @@
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Component, OnInit, ChangeDetectorRef, enableProdMode } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { WeatherServiceService } from '../weather-service.service';
-import { HttpClient } from '@angular/common/http';
-import { Subscription, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Subscription, timer, Observable } from 'rxjs';
+import { switchMap, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -45,11 +44,7 @@ export class HomeComponent implements OnInit {
     this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=hourly`;
     this.timeObserInterval.subscribe(n => this.TimerElapse());
 
-    this.weatherSub = timer(0, 120000).pipe(
-      switchMap(
-        () => this.weatherService.dataGet(this.apiURL)
-      )
-    ).subscribe(result => this.weatherData = result);
+    this.InitWeatherGet(0);
   }
 
   TimerElapse() {
@@ -84,6 +79,30 @@ export class HomeComponent implements OnInit {
 
   TimeGet(unixTime) {
     return new Date(unixTime * 1000);
+  }
+
+  InitWeatherGet(startAfter: number) {
+    this.weatherSub = timer(startAfter, 120000).pipe(
+      switchMap(
+        () => this.weatherService.dataGet(this.apiURL)
+      ),
+      catchError(error => {
+        console.log('Error occured accessing the proxy server: ' + error.statusText);
+        if (!!this.weatherData) {
+          this.weatherData.currently.icon = 'Error-Retrying';
+        }
+        this.InitWeatherGet(60000);
+        return new Observable();
+      })
+    ).subscribe(result => this.weatherData = result);
+  }
+
+  WeatherGetError(Error: any){
+    console.log('Error occured accessing the proxy server: ' + Error);
+    if (!!this.weatherData) {
+      this.weatherData.currently.icon = 'Error-Retrying';
+    }
+    this.InitWeatherGet(60000);
   }
 
 }
