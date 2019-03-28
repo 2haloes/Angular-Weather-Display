@@ -1,27 +1,38 @@
-# AngularWeatherDisplay
+# Angular Weather Display
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.2.
+![Image showing the Angular Weather Display](https://sites.2haloes.co.uk/images/weatherdisplay_angular.PNG)
+## What is it?
+A basic application that shows the weather, it works on any relatively modern device. It displays the current time and weather as well as a 5 day forecast. 
 
-## Development server
+This is designed to be developed alongside the [Dotnet core Weather Display](https://github.com/2haloes/Weather-Display-Dotnet-Core) that is easier to setup, however this has much wider compatibility (Mainly on ARM devices such as the Raspberry Pi)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## System requirements
+* Any decently modern browser (See Angular compatibility [here](https://angular.io/guide/browser-support))
+* A screen wider than it is tall (Basically anything outside of a phone in portrait mode)
+* An internet connection
+* Access to any kind of ASP.NET or PHP server (This can be self hosted and has been tested with XSP on Linux)
 
-## Code scaffolding
+## Features
+* See the current weather easily
+* 5 day forecast 
+* Usable anywhere for any location
+* Supports SI (°C) and US (°F) units
+* Works fullscreen for embedded devices
+* Content expands with the window size while retaining image and text quality (Tested up to 1080P)
+* Easy to configure settings
+* Easy to modify to suit your needs using Visual Studio code or any editor
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tested on
+* Windows 10 using latest Firefox (As of 2019-03-28)
+* Ubuntu 18.04 using latest Firefox (As of 2019-03-28)
+* Raspbian Pixel using latest Chromium (As of 2019-03-28)
 
-## Build
+## Setup on Raspberry Pi
+Coming Soon!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Troubleshooting
+[See the Wiki page](https://github.com/2haloes/Angular-Weather-Display/wiki/Troubleshooting)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Credits
+* DarkSky for making the API that this program runs on
+* Icons made by <a href="https://www.flaticon.com/authors/rns" title="RNS">RNS</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
