@@ -1,5 +1,6 @@
 <%@ Page Language="C#" %>
 <%@ Import Namespace="System.Net" %>
+<%@ Import Namespace="System.IO" %>
 
 
 <%
@@ -20,6 +21,7 @@
         retval = new WebClient().DownloadString(queryString);
     }
     catch (Exception ex) {
+        File.AppendAllText(Server.MapPath(".") + "\error_log", "[" + DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss") + "] - " + ex.message);
         Response.Write(errorReturn);
     }
     finally {
