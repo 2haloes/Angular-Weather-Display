@@ -20,7 +20,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/assets",
-              "src/app/darkskyproxy.php"
+              "src/darkskyproxy.php"
             ],
             "styles": [
               "src/styles.css"
@@ -80,8 +80,8 @@
             "asp": {
               "fileReplacements": [
                 {
-                  "replace": "src/app/darkskyproxy.php",
-                  "with": "src/app/darkskyproxy.aspx"
+                  "replace": "src/darkskyproxy.php",
+                  "with": "src/darkskyproxy.aspx"
                 },
                 {
                   "replace": "src/environments/environment.ts",
