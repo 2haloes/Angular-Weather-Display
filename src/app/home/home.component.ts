@@ -1,5 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { WeatherServiceService } from '../weather-service.service';
 import { Subscription, timer, Observable } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
@@ -41,7 +42,8 @@ export class HomeComponent implements OnInit {
     this.lon = this.route.snapshot.paramMap.get('lon'),
     this.units = this.route.snapshot.paramMap.get('units'),
     this.summary = this.route.snapshot.paramMap.get('summary');
-    this.apiURL = `darkskyproxy.php?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=hourly`;
+    // enviroment.serverExt defaults to php, building with '--configuration=asp' will use the aspx file instead
+    this.apiURL = `darkskyproxy.${environment.serverExt}?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=hourly`;
     this.timeObserInterval.subscribe(n => this.TimerElapse());
 
     this.InitWeatherGet(0);
