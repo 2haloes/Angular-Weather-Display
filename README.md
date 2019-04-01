@@ -27,6 +27,12 @@ This is designed to be developed alongside the [Dotnet core Weather Display](htt
 * Ubuntu 18.04 using latest Firefox (As of 2019-03-28)
 * Raspbian Pixel using latest Chromium (As of 2019-03-28)
 
+## Editing and building
+[See the Wiki page](https://github.com/2haloes/Angular-Weather-Display/wiki/Editing-and-Building)
+
+## Deployment
+[See the Wiki page](https://github.com/2haloes/Angular-Weather-Display/wiki/Deployment)
+
 ## Setup on Raspberry Pi
 Coming Soon!
 
