@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   lon = '0.00';
   units = 'auto';
   summary = 'current';
+  minLong = '2';
   _currentTime: number;
   timeObserInterval = timer(0, 5000);
   weatherSub: Subscription;
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
     this.lon = this.route.snapshot.paramMap.get('lon'),
     this.units = this.route.snapshot.paramMap.get('units'),
     this.summary = this.route.snapshot.paramMap.get('summary');
+    this.minLong = this.route.snapshot.paramMap.get('minLong');
     // enviroment.serverExt defaults to php, building with '--configuration=asp' will use the aspx file instead
     this.apiURL = `darkskyproxy.${environment.serverExt}?api=https://api.darksky.net/forecast/${this.apiKey}/${this.lat},${this.lon}?${this.weatherService.setOptionalString(this.lang, this.units)}exclude=hourly`;
     this.timeObserInterval.subscribe(n => this.TimerElapse());
@@ -79,12 +81,22 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  MinLongGet() {
+    if (!!this.minLong) {
+      // One minute per value of minLong
+      return +this.minLong * 60000;
+    } else {
+      // Default to 2 minutes
+      return 120000;
+    }
+  }
+
   TimeGet(unixTime) {
     return new Date(unixTime * 1000);
   }
 
   InitWeatherGet(startAfter: number) {
-    this.weatherSub = timer(startAfter, 120000).pipe(
+    this.weatherSub = timer(startAfter, this.MinLongGet()).pipe(
       switchMap(
         () => this.weatherService.dataGet(this.apiURL)
       ),
