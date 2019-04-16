@@ -39,6 +39,9 @@ Coming Soon!
 ## Troubleshooting
 [See the Wiki page](https://github.com/2haloes/Angular-Weather-Display/wiki/Troubleshooting)
 
+## Known issues
+* Data cannot be fetched without using a proxy server, this is impossible to fix as Dark Sky have disabled CORS
+
 ## Credits
 * DarkSky for making the API that this program runs on
 * Icons made by <a href="https://www.flaticon.com/authors/rns" title="RNS">RNS</a> from <a href="https://www.flaticon.com/" 		    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 		    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
