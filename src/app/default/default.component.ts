@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { WeatherServiceService } from '../weather-service.service';
 
@@ -9,7 +9,7 @@ import { WeatherServiceService } from '../weather-service.service';
 })
 export class DefaultComponent implements OnInit {
 
-  constructor(public weatherService: WeatherServiceService, private route: ActivatedRoute) { }
+  constructor(public weatherService: WeatherServiceService, private route: ActivatedRoute, private router: Router) { }
 
   apiKey: string;
   lat: string;
@@ -46,6 +46,24 @@ export class DefaultComponent implements OnInit {
   public summaryChange(event): void{
     this.summary = event.target.value;
     console.log(this.summary);
+  }
+
+  onSubmit(){
+    let extraParams = [];
+
+    if (!!this.minLong && !isNaN(+this.minLong)) {
+      extraParams.push({minLong: this.minLong});
+    }
+    if (!!this.units && this.weatherService.genUnitList().includes(this.units)) {
+      extraParams.push({units: this.units});
+    }
+    if (!!this.lang && this.weatherService.genLangList().includes(this.lang)) {
+      extraParams.push({lang: this.lang});
+    }
+    if (!!this.summary && this.summaryList.includes(this.summary)) {
+      extraParams.push({summary: this.summary});
+    }
+    this.router.navigate([`/${this.apiKey}/${this.lat}/${this.lon}`], {queryParams: extraParams});
   }
 
 }
