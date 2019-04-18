@@ -1,3 +1,26 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .defaultText {
   font-size: 4vmin;
+}
+
+.formText {
+  font-size: 3.5vmin;
+}
+
+.formApi{
+  width: 50%;
+  height: 3vmin
+}
+
+.formDefault{
+  width: 10%;
+  font-size: 3vmin;
+  margin-right: 5%;
+}
+
+.divCentered{
+  text-align: center;
 }

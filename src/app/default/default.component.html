@@ -1,4 +1,48 @@
-<h3 class="defaultText">{{MainText}}</h3>
+<h3 class="defaultText">You appear to not have entered in all of the values required for this app to run. Either check the values above or use the form below to get this up and running!</h3>
+<br/>
+  <div class="divCentered">
+    <label for="apikey" class="formText">API Key: </label>
+    <input type="text" name="apikey" id="apikey" value="{{apiKey}}" required maxlength=32 minlength=32 class="formApi"/>
+  </div>
+
+  <br/><br/><br/>
+  <div class="divCentered">
+    <label for="lat" class="formText">Lat: </label>
+    <input type="text" name="lat" id="lat" value="{{lat}}" required class="formDefault"/>
+
+    <label for="long" class="formText">Long: </label>
+    <input type="text" name="long" id="long" value="{{lon}}" required class="formDefault"/>
+
+
+    <label for="selectlang" class="formText">Language: </label>
+    <select name="selectlang" id="selectlang" (change)="langChange($event)" class="formDefault">
+      <option value="" selected disabled hidden>Select lang</option>
+      <option *ngFor="let language of weatherService.genLangList()" value={{language}} >{{language}}</option>
+    </select>
+  </div>
+
+  <br/><br/>
+
+  <div class="divCentered">
+    <label for="selectunits" class="formText">Unit type: </label>
+    <select name="selectunits" id="selectunits" (change)="unitChange($event)" class="formDefault">
+      <option value="" selected disabled hidden>Select unit</option>
+      <option *ngFor="let unit of weatherService.genUnitList()" value={{unit}} >{{unit}}</option>
+    </select>
+
+    <label for="selectsummary" class="formText">Summary type: </label>
+    <select name="selectsummary" id="selectsummary" (change)="summaryChange($event)" class="formDefault">
+      <option value="" selected disabled hidden>Select summary type</option>
+      <option *ngFor="let summary of summaryList" value={{summary}} >{{summary}}</option>
+    </select>
+
+    <label for="minlong" class="formText">Time between updates: </label>
+    <input type="text" name="minlong" id="minlong" value="{{minLong}}" class="formDefault"/>
+  </div>
+  <br/><br/>
+  <div class="divCentered">
+    <input type="submit" value="Load"  class="formDefault" (click)="onSubmit()"/>
+  </div>
 <br/><br/>
 <a href="https://darksky.net/dev/account" class="defaultText">Darksky site to get API key</a> <br/> <br/>
 <a href="https://www.latlong.net/" class="defaultText">Site to obtain lat and long of location</a> <br/> <br/>

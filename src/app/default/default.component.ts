@@ -1,5 +1,6 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { WeatherServiceService } from '../weather-service.service';
 
 @Component({
   selector: 'app-default',
@@ -8,25 +9,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaultComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(public weatherService: WeatherServiceService, private route: ActivatedRoute, private router: Router) { }
 
   apiKey: string;
   lat: string;
-  MainText: string;
+  lon: string;
+  lang: string;
+  units: string;
+  summary: string;
+  minLong: string;
+  summaryList = [
+    'currently',
+    'minutely',
+    'weeklong'
+  ];
 
   ngOnInit() {
-    this.apiKey = this.route.snapshot.paramMap.get('key');
-    this.lat = this.route.snapshot.paramMap.get('lat');
+    this.apiKey = this.route.snapshot.paramMap.get('key'),
+    this.lang = this.route.snapshot.paramMap.get('lang'),
+    this.lat = this.route.snapshot.paramMap.get('lat'),
+    this.lon = this.route.snapshot.paramMap.get('lon'),
+    this.units = this.route.snapshot.paramMap.get('units'),
+    this.summary = this.route.snapshot.paramMap.get('summary');
+    this.minLong = this.route.snapshot.paramMap.get('minLong');
 
-    if (!!this.apiKey) {
-      if (!!this.lat) {
-        this.MainText = 'The URL is currently missing the longitude number, this can be appiled by adding "/[long]" to the end of the website address. If you do not know this then use the link below to find the lat and long of the location';
-      } else {
-        this.MainText = 'The URL is currently missing the latitude and longitude numbers, this can be appiled by adding "/[lat]/[long]" to the end of the website address. If you do not know this then use the link below to find the lat and long of the location';
-      }
-    } else {
-      this.MainText = 'The URL is currently missing the API key, this is required for the application to pull data from the Darksky API, this can be applied by adding "/[API key]" to the end of the website address. If you do not have one or do not know what it is then use the link below to either create an account or to copy your key from'
+    this.units = 'uk2';
+  }
+  public langChange(event): void{
+    this.lang = event.target.value;
+  }
+
+  public unitChange(event): void{
+    this.units = event.target.value;
+  }
+
+  public summaryChange(event): void{
+    this.summary = event.target.value;
+    console.log(this.summary);
+  }
+
+  onSubmit(){
+    let extraParams = [];
+
+    if (!!this.minLong && !isNaN(+this.minLong)) {
+      extraParams.push({minLong: this.minLong});
     }
+    if (!!this.units && this.weatherService.genUnitList().includes(this.units)) {
+      extraParams.push({units: this.units});
+    }
+    if (!!this.lang && this.weatherService.genLangList().includes(this.lang)) {
+      extraParams.push({lang: this.lang});
+    }
+    if (!!this.summary && this.summaryList.includes(this.summary)) {
+      extraParams.push({summary: this.summary});
+    }
+    this.router.navigate([`/${this.apiKey}/${this.lat}/${this.lon}`], {queryParams: extraParams});
   }
 
 }
